@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin mobile{
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+@mixin tablet{
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin laptop{
+    @media screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
+.container {
+    height: 100vh;
+    background: #9290C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wraper {
+        width: 20%;
+        background: #FBF9F1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        @include mobile{
+            width: 60%;
+        }
+
+        .title {
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        img {
+            width: 40px;
+            margin-bottom: 10px;
+        }
+
+        form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+
+            input {
+                padding: 10px;
+                margin-bottom: 10px;
+                background: transparent;
+                border: 0;
+                border-bottom: 1px solid #9290C3;
+                outline: none;
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                .avatar {
+                    width: 35px;
+                    height: 35px;
+                    background: #9290C3;
+                    padding: 3px;
+                    border-radius: 10px;
+                    margin: 5px 0px;
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                span {
+                    font-size: 12px;
+                    margin-left: 10px;
+                }
+            }
+
+            button {
+                background: #9290C3;
+                border: 0;
+                padding: 10px;
+                color: white;
+                margin-top: 10px;
+                cursor: pointer;
+                transition: 0.3s ease all;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    width: 30%;
+                    margin-bottom: -2px;
+                }
+
+                &:hover {
+                    background: #535C91;
+                }
+            }
+        }
+
+        .bottom-text {
+            font-size: 12px;
+            margin: 15px 0px;
+        }
+    }
+}
+
+.home {
+    height: 100vh;
+    background: #9290C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wraper {
+        width: 65%;
+        height: 80%;
+        background: #98ABEE;
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        @include mobile{
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+        }
+        .sidebar {
+            flex: 1;
+            background: #1B1A55;
+            overflow: hidden;
+            position: relative;
+            .navbar {
+                height: 50px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #070F2B;
+                padding: 10px;
+
+                .logo {
+                    width: 30px;
+                }
+
+                .current-user {
+                    display: flex;
+                    align-items: center;
+
+                    .avatar {
+                        width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .current-user-name {
+                        color: white;
+                        font-size: 12px;
+                        margin: 0px 10px;
+                        @include mobile{
+                            display: none;
+                        }
+                    }
+
+                    button {
+                        background: #1B1A55;
+                        border: none;
+                        padding: 5px 10px;
+                        color: #FBF9F1;
+                        cursor: pointer;
+                        @include mobile{
+                            position: absolute;
+                            left: 10px;
+                            bottom: 20px;
+                            border: 1px solid #f6f3ee;
+                        }
+                    }
+                }
+            }
+
+            .search {
+                border-bottom: 1px solid #a5a5a5;
+
+                input {
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    padding: 10px;
+                    outline: 0;
+                    color: white;
+                    margin-bottom: 10px;
+
+                    &::placeholder {
+                        color: lightgray;
+                    }
+                }
+
+                .user {
+                    padding: 10px;
+
+                    &:hover {
+                        background: #070F2B;
+                    }
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .name {
+                        color: white;
+                        font-size: 12px;
+                        margin-left: 10px;
+                    }
+
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            .chats {
+                .user {
+                    padding: 10px;
+
+                    &:hover {
+                        background: #070F2B;
+                    }
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .name {
+                        color: white;
+                        font-size: 12px;
+                        margin-left: 10px;
+                    }
+
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+
+        .chatbox {
+            flex: 2;
+
+            .chat-info {
+                height: 50px;
+                background: #1B1A55;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .friend-name {
+                    font-size: 12px;
+                    color: #FBF9F1;
+                }
+
+                .addition {
+                    i {
+                        margin-right: 15px;
+                        font-size: 12px;
+                        color: #FBF9F1;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .massages {
+                height: calc(100% - 160px);
+                background: #f6f3ee;
+                padding: 10px;
+                overflow-y: scroll;
+                .alert{
+                    font-size: 15px;
+                    color: rgb(108, 108, 108);
+
+                    &.off{
+                        display: none;
+                    }
+                }
+
+                &::-webkit-scrollbar {
+                    width: 5px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #070F2B;
+                    border-radius: 10px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: none;
+                }
+
+                .massage {
+                    display: flex;
+
+                    .massageInfo {
+                        img {
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            color: rgb(143, 143, 143);
+                            font-size: 10px;
+                        }
+                    }
+
+                    .massageContent {
+                        margin-left: 10px;
+
+                        p {
+                            background: white;
+                            padding: 10px;
+                            margin-bottom: 10px;
+                            border-radius: 0px 10px 10px 10px;
+                            color: #1B1A55;
+                            font-size: 12px;
+                        }
+
+                        img {
+                            width: 150px;
+                        }
+                    }
+
+                    &.owner {
+                        flex-direction: row-reverse;
+
+                        .massageContent {
+                            margin-right: 10px;
+
+                            p {
+                                background: #98ABEE;
+                                padding: 10px;
+                                margin-bottom: 10px;
+                                border-radius: 10px 0px 10px 10px;
+                                color: white;
+                            }
+
+                            img {
+                                width: 150px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .send-massage {
+                height: 50px;
+                padding: 10px;
+                background: white;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                input {
+                    width: 80%;
+                    height: 100%;
+                    border: none;
+                    background: transparent;
+                    outline: none;
+                    @include mobile{
+                        width: 55%;
+                    }
+
+                    &::placeholder {
+                        color: lightgray;
+                    }
+                }
+
+                .attachment {
+                    width: 20%;
+                    display: flex;
+                    justify-content: space-between;
+                    @include mobile{
+                        width: 45%;
+                    }
+                    label{
+
+                        position: relative;
+
+                        i {
+                            color: #070F2B;
+                            margin-left: 20px;
+                            cursor: pointer;
+                        }
+                        .file-indicator{
+                            height: 10px;
+                            width: 10px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: red;
+                            color: white;
+                            font-size: 5px;
+                            position: absolute;
+                            right: -2px;
+                            @include mobile{
+                                top: -2px;
+                            }
+                        }
+    
+                    }
+                    .send {
+                        font-size: 20px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
