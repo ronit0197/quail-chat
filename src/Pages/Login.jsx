@@ -1,32 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Firebase"
+import { auth } from "../Firebase";
 import { Link, useNavigate } from 'react-router-dom';
-import Loader from '../Loader/loader.gif'
+import Loader from '../Loader/loader.gif';
 
 const Login = () => {
-
-    const [error, setError] = useState(false);
-    const navigate = useNavigate();
+    const [error, setError] = useState("");
     const [isLogin, setIslogin] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const email = e.target[0].value;
-        const password = e.target[1].value;
+        setError(""); // Reset the error message
 
-        try{
+        const email = e.target[0].value.trim();
+        const password = e.target[1].value.trim();
 
-            await signInWithEmailAndPassword(auth, email, password)
-            navigate("/")
-            
-        }catch(error){
-            setError(true)
+        // Validate fields
+        if (!email) {
+            setError("Please fill in the email.");
+            return;
         }
-        
-        setIslogin(true)
+        if (!password) {
+            setError("Please fill in the password.");
+            return;
+        }
 
-    }
+        setIslogin(true); // Start the loader
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/"); // Redirect on successful login
+        } catch (error) {
+            setError("Invalid Email or Password!");
+        } finally {
+            setIslogin(false); // Stop the loader
+        }
+    };
 
     return (
         <div className='container'>
@@ -36,13 +45,17 @@ const Login = () => {
                 <form onSubmit={handleLogin}>
                     <input type="email" placeholder='Email Id' />
                     <input type="password" placeholder='Password' />
-                    {error && <span style={{color:"red", fontSize:"10px"}}>Invalid Email or Password!</span>}
-                    <button>{isLogin ? <img src={Loader} alt="Loader" /> : "Login"}</button>
+                    {error && <span style={{ color: "red", fontSize: "10px" }}>{error}</span>}
+                    <button>
+                        {isLogin ? <img src={Loader} alt="Loader" style={{ height: '20px' }} /> : "Login"}
+                    </button>
                 </form>
-                <span className='bottom-text'>Don't have an account? <Link to="/register">Register</Link></span>
+                <span className='bottom-text'>
+                    Don't have an account? <Link to="/register">Register</Link>
+                </span>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

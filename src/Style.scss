@@ -3,17 +3,19 @@
     padding: 0;
 }
 
-@mixin mobile{
+@mixin mobile {
     @media screen and (max-width: 480px) {
         @content;
     }
 }
-@mixin tablet{
+
+@mixin tablet {
     @media screen and (max-width: 768px) {
         @content;
     }
 }
-@mixin laptop{
+
+@mixin laptop {
     @media screen and (max-width: 1200px) {
         @content;
     }
@@ -34,7 +36,8 @@
         align-items: center;
         padding: 10px;
         border-radius: 10px;
-        @include mobile{
+
+        @include mobile {
             width: 60%;
         }
 
@@ -66,6 +69,7 @@
                 display: flex;
                 align-items: center;
                 cursor: pointer;
+
                 .avatar {
                     width: 35px;
                     height: 35px;
@@ -73,6 +77,7 @@
                     padding: 3px;
                     border-radius: 10px;
                     margin: 5px 0px;
+
                     img {
                         width: 100%;
                         object-fit: cover;
@@ -96,7 +101,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                img{
+
+                img {
                     width: 30%;
                     margin-bottom: -2px;
                 }
@@ -128,16 +134,19 @@
         display: flex;
         border-radius: 10px;
         overflow: hidden;
-        @include mobile{
+
+        @include mobile {
             width: 100%;
             height: 100%;
             border-radius: 0px;
         }
+
         .sidebar {
             flex: 1;
             background: #1B1A55;
             overflow: hidden;
             position: relative;
+
             .navbar {
                 height: 50px;
                 display: flex;
@@ -165,7 +174,8 @@
                         color: white;
                         font-size: 12px;
                         margin: 0px 10px;
-                        @include mobile{
+
+                        @include mobile {
                             display: none;
                         }
                     }
@@ -176,7 +186,8 @@
                         padding: 5px 10px;
                         color: #FBF9F1;
                         cursor: pointer;
-                        @include mobile{
+
+                        @include mobile {
                             position: absolute;
                             left: 10px;
                             bottom: 20px;
@@ -286,11 +297,12 @@
                 background: #f6f3ee;
                 padding: 10px;
                 overflow-y: scroll;
-                .alert{
+
+                .alert {
                     font-size: 15px;
                     color: rgb(108, 108, 108);
 
-                    &.off{
+                    &.off {
                         display: none;
                     }
                 }
@@ -310,8 +322,11 @@
 
                 .massage {
                     display: flex;
+                    margin-bottom: 10px;
+                    position: relative;
 
                     .massageInfo {
+
                         img {
                             width: 30px;
                             height: 30px;
@@ -381,7 +396,8 @@
                     border: none;
                     background: transparent;
                     outline: none;
-                    @include mobile{
+
+                    @include mobile {
                         width: 55%;
                     }
 
@@ -394,10 +410,12 @@
                     width: 20%;
                     display: flex;
                     justify-content: space-between;
-                    @include mobile{
+
+                    @include mobile {
                         width: 45%;
                     }
-                    label{
+
+                    label {
 
                         position: relative;
 
@@ -406,7 +424,8 @@
                             margin-left: 20px;
                             cursor: pointer;
                         }
-                        .file-indicator{
+
+                        .file-indicator {
                             height: 10px;
                             width: 10px;
                             border-radius: 50%;
@@ -418,12 +437,14 @@
                             font-size: 5px;
                             position: absolute;
                             right: -2px;
-                            @include mobile{
+
+                            @include mobile {
                                 top: -2px;
                             }
                         }
-    
+
                     }
+
                     .send {
                         font-size: 20px;
                         cursor: pointer;
