@@ -33,6 +33,9 @@ const Send = () => {
             case 'running':
               console.log('Upload is running');
               break;
+            default:
+              console.log('Unknown state: ' + snapshot.state);
+              break;
           }
         },
         (error) => {
@@ -69,16 +72,16 @@ const Send = () => {
     }
 
     await updateDoc(doc(db, "userChats", currentUser.uid), {
-      [data.chatId+".lastMassage"]: {
+      [data.chatId + ".lastMassage"]: {
         text,
       },
-      [data.chatId+".date"]: serverTimestamp(),
+      [data.chatId + ".date"]: serverTimestamp(),
     })
     await updateDoc(doc(db, "userChats", data.user.uid), {
-      [data.chatId+".lastMassage"]: {
+      [data.chatId + ".lastMassage"]: {
         text,
       },
-      [data.chatId+".date"]: serverTimestamp(),
+      [data.chatId + ".date"]: serverTimestamp(),
     })
 
     setText("")
@@ -92,7 +95,7 @@ const Send = () => {
       <div className="attachment">
         <input type="file" style={{ display: "none" }} id='file' onChange={e => setImg(e.target.files[0])} />
         <label htmlFor="file">
-          { img && <div className="file-indicator">1</div>}
+          {img && <div className="file-indicator">1</div>}
           <i className="fa-solid fa-paperclip"></i>
           <i className="fa-regular fa-image"></i>
         </label>
